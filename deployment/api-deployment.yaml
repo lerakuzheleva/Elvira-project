@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: timestampapi-deployment
+spec:
+  selector:
+    matchLabels:
+      app: timestampapi-k8s
+  template:
+    metadata:
+      labels:
+        app: timestampapi-k8s
+    spec:
+      containers:
+        - name: timestampapi-k8s
+          image: 372506889800.dkr.ecr.us-east-1.amazonaws.com/timestampapi:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
